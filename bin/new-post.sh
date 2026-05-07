@@ -65,7 +65,7 @@ if [ "$FIRST_LINE" = "---" ]; then
   # Already has frontmatter — just move into place
   mv "$SRC" "$TARGET"
 else
-  TITLE="$(printf '%s' "$BASE" | tr '-_' '  ' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1')"
+  TITLE="$(printf '%s' "$BASE" | sed 's/[-_]/ /g' | awk '{for(i=1;i<=NF;i++) $i=toupper(substr($i,1,1)) substr($i,2)}1')"
   DATE="$(date +%Y-%m-%dT%H:%M:%S%z)"
   {
     echo "---"
