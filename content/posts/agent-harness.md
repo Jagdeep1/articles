@@ -9,10 +9,7 @@ author: "Jagdeep Singh"
 authorRole: "GenAI Specialist Solutions Architect"
 ---
 
-<figure class="hero-embed">
-  <img src="/images/agent-harness-hero.svg" alt="Animated schematic of an agent harness — nine components light up in sequence around a central iteration loop, with wires drawing between them and pulse dots travelling along the wires." style="display:block; width:100%; height:auto; background:#0b1220; border-radius:8px;"/>
-  <figcaption>Nine components, one coherent loop. Each module lights up in turn</figcaption>
-</figure>
+{{< figure src="/images/agent-harness-hero.svg" alt="Animated schematic of an agent harness — nine components light up in sequence around a central iteration loop, with wires drawing between them and pulse dots travelling along the wires." caption="Nine components, one coherent loop. Each module lights up in turn." >}}
 
 People throw the word *harness* around a lot, and they don't always mean the same thing. Some people mean the agent loop. Others mean the framework wrapped around the loop, or the runtime hosting the whole thing. The terms aren't equivalent, and the difference shows up the minute you have to decide what your team is going to build versus buy.
 

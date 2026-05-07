@@ -5,6 +5,7 @@ theme = "warm-editorial"
 locale = "en-us"
 enableGitInfo = true
 enableRobotsTXT = true
+canonifyURLs = true
 
 [params]
   description = "Notes and thoughts on systems, software, and engineering."

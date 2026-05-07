@@ -1,0 +1,2 @@
+{{- $src := .Destination | safeURL | relURL -}}
+<img src="{{ $src }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
