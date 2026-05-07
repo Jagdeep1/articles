@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{- $posts := where site.RegularPages "Section" "posts" -}}
+<section class="container">
+  <header class="article-list__lead" style="padding-top: var(--space-xl);">
+    <h1>{{ .Site.Title }}</h1>
+    <p>{{ .Site.Params.description }}</p>
+  </header>
+
+  <div class="article-list">
+    {{- range $posts }}
+      {{ partial "article-card.html" . }}
+    {{- else }}
+      <p style="text-align:center; color: var(--on-surface-variant);">No posts yet.</p>
+    {{- end }}
+  </div>
+</section>
+{{ end }}

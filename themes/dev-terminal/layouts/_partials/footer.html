@@ -1,0 +1,33 @@
+{{- $year := now.Year -}}
+{{- $start := .Site.Params.copyrightStart | default $year -}}
+<footer class="site-footer">
+  <div class="container container--wide">
+    <div class="site-footer__inner">
+      <div>
+        <p class="site-footer__brand">{{ .Site.Title }}</p>
+        <p class="site-footer__copy">
+          &copy; {{ if eq $start $year }}{{ $year }}{{ else }}{{ $start }}–{{ $year }}{{ end }}
+          {{ .Site.Params.author | default .Site.Title }}. Built for the modern architect.
+        </p>
+      </div>
+
+      <div>
+        <p class="site-footer__col-title">Read</p>
+        <ul class="site-footer__list">
+          <li><a href="{{ "/posts/" | relURL }}">Articles</a></li>
+          <li><a href="{{ "/tags/" | relURL }}">Tags</a></li>
+          <li><a href="{{ "/index.xml" | relURL }}">RSS Feed</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="site-footer__col-title">Connect</p>
+        <ul class="site-footer__list">
+          {{- range .Site.Params.social }}
+          <li><a href="{{ .url }}" rel="me noopener" target="_blank">{{ .name }}</a></li>
+          {{- end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

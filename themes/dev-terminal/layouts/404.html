@@ -1,0 +1,14 @@
+{{ define "main" }}
+<section class="container">
+  <div style="text-align:center; padding: var(--space-xl) 0;">
+    <p class="pill" style="margin-bottom: var(--space-md);">
+      <span>404</span>
+    </p>
+    <h1 style="margin-bottom: var(--space-md);">This route returned no rows.</h1>
+    <p style="color: var(--on-surface-variant); max-width: 480px; margin: 0 auto var(--space-md);">
+      The page you requested doesn't exist, was moved, or never compiled. Let's get you back to something useful.
+    </p>
+    <a class="btn btn--primary" href="{{ "/" | relURL }}">Return home</a>
+  </div>
+</section>
+{{ end }}

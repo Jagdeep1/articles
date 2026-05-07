@@ -1,0 +1,10 @@
+{{- if .Site.Params.newsletterEnabled -}}
+<aside id="newsletter" class="newsletter">
+  <p class="newsletter__title">Stay Terminal</p>
+  <p class="newsletter__copy">{{ .Site.Params.tagline | default "Deep technical insights, delivered weekly to your inbox." }}</p>
+  <form class="newsletter__form" action="#" method="post" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Wire this up to your provider';">
+    <input class="newsletter__input" type="email" name="email" placeholder="email@example.com" required aria-label="Email address">
+    <button class="newsletter__submit" type="submit">Join 40k+ Engineers</button>
+  </form>
+</aside>
+{{- end -}}

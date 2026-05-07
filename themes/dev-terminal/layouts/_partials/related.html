@@ -1,0 +1,18 @@
+{{- $related := site.RegularPages.Related . | first 3 -}}
+{{- if not $related -}}
+  {{- $related = where site.RegularPages "Permalink" "ne" .Permalink | first 3 -}}
+{{- end -}}
+{{- if $related -}}
+<div class="sidebar__module">
+  <p class="sidebar__title">Recommended</p>
+  <ul class="related__list">
+    {{- range $related }}
+    {{- $tag := index .Params.tags 0 | default (.Params.category | default "Article") -}}
+    <a class="related__item" href="{{ .RelPermalink }}">
+      <span class="related__item-title">{{ .Title }}</span>
+      <span class="related__item-meta">{{ $tag | upper }} · {{ .ReadingTime }} min read</span>
+    </a>
+    {{- end }}
+  </ul>
+</div>
+{{- end -}}

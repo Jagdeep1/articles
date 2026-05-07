@@ -1,0 +1,11 @@
+{{- if and .TableOfContents (gt (len .TableOfContents) 50) -}}
+<div class="sidebar__module">
+  <p class="sidebar__title toc__title">
+    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M2 3h12M2 8h12M2 13h12"/>
+    </svg>
+    On this page
+  </p>
+  <nav class="toc" aria-label="Table of contents">{{ .TableOfContents }}</nav>
+</div>
+{{- end -}}

@@ -1,0 +1,10 @@
+name = "dev-terminal"
+license = "MIT"
+description = "Technical Editorial — a refined, dark, long-form theme for engineering writing."
+homepage = "https://github.com/jagdeep1/jagdeep1.github.io"
+tags = ["blog", "dark", "technical", "editorial", "minimal"]
+features = ["toc", "code-copy", "related-posts", "newsletter", "rss"]
+min_version = "0.146.0"
+
+[author]
+  name = "Jagdeep"

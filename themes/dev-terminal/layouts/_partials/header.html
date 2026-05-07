@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="container container--wide">
+    <div class="site-header__inner">
+      <a class="site-logo" href="{{ "/" | relURL }}" aria-label="{{ .Site.Title }} home">
+        <span class="site-logo__dot" aria-hidden="true"></span>
+        <span>{{ .Site.Title }}</span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        {{- range .Site.Params.nav }}
+          {{- $url := .url | relURL }}
+          {{- $active := or (eq $.RelPermalink (.url | relURL)) (and (ne .url "/") (hasPrefix $.RelPermalink (.url | relURL))) }}
+          <a class="site-nav__link{{ if $active }} site-nav__link--active{{ end }}" href="{{ $url }}">{{ .name }}</a>
+        {{- end }}
+      </nav>
+
+      <div class="site-header__actions">
+        {{- if .Site.Params.searchEnabled }}
+        <form class="search" role="search" action="/search/" method="get">
+          <svg class="search__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="7" cy="7" r="5"/>
+            <path d="m11 11 3 3"/>
+          </svg>
+          <input class="search__input" type="search" name="q" placeholder="Search articles…" aria-label="Search articles">
+        </form>
+        {{- end }}
+        {{- if .Site.Params.newsletterEnabled }}
+        <a href="#newsletter" class="btn btn--primary">Subscribe</a>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</header>
