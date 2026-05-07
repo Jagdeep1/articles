@@ -94,7 +94,7 @@ The harness resource is unchanged after either invocation. `--model-id`, `--tool
 
 ## What stands out in AgentCore Harness
 
-Past the headline feature, here is the rest of the bundle &mdash; the capabilities that, together, are the actual reason teams pick the managed harness over rolling their own.
+Following are the capabilities that are the actual reason teams pick the managed harness over rolling their own.
 
 <div class="features">
 
@@ -103,19 +103,19 @@ Past the headline feature, here is the rest of the bundle &mdash; the capabiliti
 <p class="feature"><strong>Bundled managed primitives</strong> The harness comes with AgentCore Runtime, Memory, Identity, Gateway, and Observability already wired together.</p>
 
 
-<p class="feature"><strong>Per-harness IAM execution roles plus OAuth/JWT.</strong> Identity is enforced at the harness boundary, not at the application layer. </p>
+<p class="feature"><strong>Per-harness IAM execution roles plus OAuth/JWT</strong> Identity is enforced at the harness boundary, not at the application layer. </p>
 
 <p class="feature"><strong>microVM isolation with shell and BYO container.</strong> Each session runs in its own microVM. </p>
 
-<p class="feature"><strong>Open model fabric.</strong> Bedrock is the default, but the harness accepts OpenAI, Gemini, and any OpenAI-API-compatible provider with no architecture change.</p>
+<p class="feature"><strong>Open model fabric</strong> Bedrock is the default, but the harness accepts OpenAI, Gemini, and any OpenAI-API-compatible provider with no architecture change.</p>
 
-<p class="feature"><strong>Built-in OpenTelemetry observability.</strong> Every session auto-emits OTel-compatible spans covering model calls, tool calls, memory events, tokens, and latency. Plugs into whatever observability pipeline your team already runs.</p>
+<p class="feature"><strong>Built-in OpenTelemetry observability</strong> Every session auto-emits OTel-compatible spans covering model calls, tool calls, memory events, tokens, and latency. Plugs into whatever observability pipeline your team already runs.</p>
 
-<p class="feature"><strong>Skills with flexible installation paths.</strong> Skills can come from a local FS path, a GitHub repo, or be baked into your container. The harness loads them at the path you specify per invocation.</p>
+<p class="feature"><strong>Skills with flexible installation paths</strong> Skills can come from a local FS path, a GitHub repo, or be baked into your container. The harness loads them at the path you specify per invocation.</p>
 
-<p class="feature"><strong>Built-in code interpreter and browser tools.</strong> Available as drop-in tools without you having to provision sandboxed execution environments yourself.</p>
+<p class="feature"><strong>Built-in code interpreter and browser tools</strong> Available as drop-in tools without you having to provision sandboxed execution environments yourself.</p>
 
-<p class="feature"><strong>Session resumption by ID.</strong> Pass <code>--session-id</code> (or the equivalent SDK parameter) to continue an existing conversation; omit it to spawn a fresh session. Standard, but it works without you wiring it up.</p>
+<p class="feature"><strong>Session resumption by ID</strong> Pass <code>--session-id</code> (or the equivalent SDK parameter) to continue an existing conversation; omit it to spawn a fresh session. Standard, but it works without you wiring it up.</p>
 
 </div>
 
@@ -124,11 +124,11 @@ Past the headline feature, here is the rest of the bundle &mdash; the capabiliti
 The trade-off here is the usual managed-service trade-off. You give up some control over the loop in exchange for not having to maintain it. If you need fine-grained customization of the agent loop, you drop down to plain AgentCore and assemble the pieces yourself.
 
 
-| Right default when&hellip; | Wrong default when&hellip; |
+| Good fit | Not a good fit |
 | --- | --- |
 | **Iterating fast on a young agent.** You want to tune prompts, tools, and models without a deploy cycle in between. | **You need a non-standard execution loop.** Planner-executor with custom checkpointing semantics, or other surgery on the loop itself. |
-| **No platform team to spare.** You need production-grade observability, identity, and durability and can't staff a team to build and maintain that yourself. | **Existing harness investment is paying off.** Your team already runs a harness and is getting real value from it &mdash; switching is mostly cost. |
-| **Multi-tenant or multi-config from day one.** Each tenant gets a different tool subset or system prompt, and you don't want to run parallel stacks per tenant. | **Regulatory or vendor constraints.** Anything that rules out a managed AWS surface &mdash; none of this applies. |
+| **No platform team to spare.** You need production-grade observability, identity, and durability and can't staff a team to build and maintain that yourself. | **Existing harness investment is paying off.** Your team already runs a harness and is getting real value from it, switching is mostly cost. |
+| **Multi-tenant or multi-config from day one.** Each tenant gets a different tool subset or system prompt, and you don't want to run parallel stacks per tenant. | **Regulatory or vendor constraints.** Anything that rules out a managed offering.|
 
 
 ## Try it
