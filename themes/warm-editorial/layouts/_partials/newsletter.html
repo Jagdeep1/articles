@@ -1,0 +1,10 @@
+{{- if .Site.Params.newsletterEnabled -}}
+<aside class="newsletter">
+  <p class="newsletter__title">Stay in the loop</p>
+  <p class="newsletter__copy">{{ .Site.Params.tagline | default "A short, considered note when something new is published." }}</p>
+  <form class="newsletter__form" action="#" method="post" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed';">
+    <input class="newsletter__input" type="email" name="email" placeholder="email@example.com" required aria-label="Email address">
+    <button class="newsletter__submit" type="submit">Subscribe</button>
+  </form>
+</aside>
+{{- end -}}

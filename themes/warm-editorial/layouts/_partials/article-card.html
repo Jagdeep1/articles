@@ -1,0 +1,15 @@
+{{- $tag := index .Params.tags 0 | default (.Params.category | default "Article") -}}
+<a class="card" href="{{ .RelPermalink }}">
+  <span class="pill card__pill">
+    <span>{{ $tag | humanize }}</span>
+  </span>
+  <h2 class="card__title">{{ .Title }}</h2>
+  {{- with or .Params.summary .Description .Summary }}
+    <p class="card__summary">{{ . | plainify | truncate 180 }}</p>
+  {{- end }}
+  <div class="card__meta">
+    <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+    <span class="card__meta-sep">·</span>
+    <span>{{ .ReadingTime }} min read</span>
+  </div>
+</a>

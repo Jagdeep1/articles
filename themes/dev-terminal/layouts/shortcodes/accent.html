@@ -1,0 +1,22 @@
+{{- /*
+  accent — color an inline span of text using the design palette.
+  Usage:    accent           (cyan, default)
+            accent "emerald" (positional)
+            accent color="..."
+  Tokens:   cyan, cyan-light, emerald, indigo, muted, error.
+            Anything else is passed through as a raw CSS color.
+  Markdown inside the shortcode is rendered, so bold/italic work.
+*/ -}}
+{{- $color := or (.Get "color") (.Get 0) "cyan" -}}
+{{- $value := $color -}}
+{{- if eq $color "cyan" -}}{{- $value = "var(--primary-container)" -}}
+{{- else if eq $color "cyan-light" -}}{{- $value = "var(--primary)" -}}
+{{- else if eq $color "emerald" -}}{{- $value = "var(--secondary)" -}}
+{{- else if eq $color "indigo" -}}{{- $value = "var(--tertiary)" -}}
+{{- else if eq $color "muted" -}}{{- $value = "var(--on-surface-variant)" -}}
+{{- else if eq $color "error" -}}{{- $value = "var(--error)" -}}
+{{- end -}}
+{{- $inner := .Inner | markdownify -}}
+{{- $inner = strings.TrimPrefix "<p>" $inner -}}
+{{- $inner = strings.TrimSuffix "</p>" $inner -}}
+<span class="accent" style="color: {{ $value | safeCSS }};">{{ $inner | safeHTML }}</span>

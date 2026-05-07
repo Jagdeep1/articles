@@ -4,21 +4,27 @@
   <div class="container container--wide">
     <div class="site-footer__inner">
       <div>
-        <p class="site-footer__brand">{{ .Site.Title }}</p>
+        <span class="site-footer__brand-row">
+          <span class="site-footer__brand-mark" aria-hidden="true"></span>
+          <span>{{ .Site.Title }}</span>
+        </span>
         <p class="site-footer__copy">
+          {{- with .Site.Params.tagline }}{{ . }}{{ else }}Notes from a deliberate corner of the web.{{ end -}}
+        </p>
+        <p class="site-footer__legal">
           &copy; {{ if eq $start $year }}{{ $year }}{{ else }}{{ $start }}–{{ $year }}{{ end }}
-          {{ .Site.Params.author | default .Site.Title }}. Built for the modern architect.
+          {{ .Site.Params.author | default .Site.Title }}.
         </p>
       </div>
 
-      <!-- <div>
+      <div>
         <p class="site-footer__col-title">Read</p>
         <ul class="site-footer__list">
           <li><a href="{{ "/posts/" | relURL }}">Articles</a></li>
           <li><a href="{{ "/tags/" | relURL }}">Tags</a></li>
-          <li><a href="{{ "/index.xml" | relURL }}">RSS Feed</a></li>
+          <li><a href="{{ "/index.xml" | relURL }}">RSS</a></li>
         </ul>
-      </div> -->
+      </div>
 
       <div>
         <p class="site-footer__col-title">Connect</p>

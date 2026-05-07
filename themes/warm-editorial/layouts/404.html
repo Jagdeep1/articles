@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section class="container">
+  <div class="error-page">
+    <span class="pill"><span>404</span></span>
+    <h1 class="error-page__title">Nothing at this address.</h1>
+    <p class="error-page__copy">The page you requested doesn't exist, was moved, or was never published. Let's get you back to something readable.</p>
+    <a class="btn btn--primary" href="{{ "/" | relURL }}">Return home</a>
+  </div>
+</section>
+{{ end }}

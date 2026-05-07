@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="{{ or site.Language.Lang "en" }}">
+<head>
+{{ partial "head.html" . }}
+{{ block "head-extra" . }}{{ end }}
+</head>
+<body>
+<div class="page">
+  {{ partial "header.html" . }}
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+</div>
+{{- $js := resources.Get "js/theme.js" | resources.Minify | resources.Fingerprint -}}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+</body>
+</html>

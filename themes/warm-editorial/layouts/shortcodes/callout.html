@@ -1,0 +1,6 @@
+{{- /*
+  callout — full-bleed coral callout card for in-post highlights.
+  Usage: {{< callout >}}**Worth noting**: …{{< /callout >}}
+  Inner is rendered as markdown.
+*/ -}}
+<aside class="callout">{{ .Inner | markdownify }}</aside>

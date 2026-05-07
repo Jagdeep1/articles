@@ -1,0 +1,19 @@
+{{ define "main" }}
+<section class="container">
+  <header class="article-list__lead">
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}<p>{{ . }}</p>{{ end }}
+    {{- if and (not .Description) .Site.Params.description (eq .Kind "section") }}
+      <p>{{ .Site.Params.description }}</p>
+    {{- end }}
+  </header>
+
+  <div class="article-list">
+    {{- range .Pages }}
+      {{ partial "article-card.html" . }}
+    {{- else }}
+      <p style="text-align:center; color: var(--muted); grid-column: 1 / -1;">No content yet.</p>
+    {{- end }}
+  </div>
+</section>
+{{ end }}

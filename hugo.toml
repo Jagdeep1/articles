@@ -1,6 +1,6 @@
 baseURL = "https://jagdeep1.github.io/"
 title = "Notes & Thoughts"
-theme = "dev-terminal"
+theme = "warm-editorial"
 
 locale = "en-us"
 enableGitInfo = true
@@ -10,17 +10,13 @@ enableRobotsTXT = true
   description = "Notes and thoughts on systems, software, and engineering."
   author = "Jagdeep"
   tagline = "Deep technical insights, delivered weekly."
-  newsletterEnabled = true
+  newsletterEnabled = false
   searchEnabled = false
   copyrightStart = 2026
 
   [[params.nav]]
     name = "Articles"
     url = "/posts/"
-
-  [[params.nav]]
-    name = "Tutorials"
-    url = "/tags/tutorial/"
 
   [[params.nav]]
     name = "About"

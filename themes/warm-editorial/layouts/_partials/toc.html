@@ -1,0 +1,6 @@
+{{- if and .TableOfContents (gt (len .TableOfContents) 50) -}}
+<div class="sidebar__module">
+  <p class="sidebar__title">On this page</p>
+  <nav class="toc" aria-label="Table of contents">{{ .TableOfContents }}</nav>
+</div>
+{{- end -}}

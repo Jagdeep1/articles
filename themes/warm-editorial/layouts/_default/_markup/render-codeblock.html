@@ -1,0 +1,17 @@
+{{- $lang := .Type | default "text" -}}
+{{- $filename := .Attributes.filename | default (.Attributes.title | default "") -}}
+{{- $opts := dict "lineNos" false "tabWidth" 2 "noClasses" false -}}
+{{- $highlighted := transform.Highlight (trim .Inner "\n") $lang $opts -}}
+<div class="codeblock" data-lang="{{ $lang }}">
+  <div class="codeblock__header">
+    <span class="codeblock__filename">{{ if $filename }}{{ $filename }}{{ else }}{{ $lang }}{{ end }}</span>
+    <button class="codeblock__copy" type="button" data-copy aria-label="Copy code">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <rect x="5" y="5" width="9" height="9" rx="1.5"/>
+        <path d="M3 11V3a1 1 0 0 1 1-1h7"/>
+      </svg>
+      <span>Copy</span>
+    </button>
+  </div>
+  <div class="codeblock__body">{{ $highlighted }}</div>
+</div>

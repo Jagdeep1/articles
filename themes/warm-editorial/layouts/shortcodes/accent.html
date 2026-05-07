@@ -1,0 +1,30 @@
+{{- /*
+  accent — color an inline span of text using the warm-editorial palette.
+  Usage:    accent              (coral, default)
+            accent "teal"       (positional)
+            accent color="..."
+  Tokens:   coral, teal, amber, ink, muted, error.
+  Aliases (for back-compat with dev-terminal posts):
+            cyan, cyan-light → coral
+            emerald          → teal
+            indigo           → amber
+  Anything else is passed through as a raw CSS color.
+  Markdown inside the shortcode is rendered, so bold/italic work.
+*/ -}}
+{{- $color := or (.Get "color") (.Get 0) "coral" -}}
+{{- $value := $color -}}
+{{- if eq $color "coral" -}}{{- $value = "var(--primary)" -}}
+{{- else if eq $color "teal" -}}{{- $value = "var(--accent-teal)" -}}
+{{- else if eq $color "amber" -}}{{- $value = "var(--accent-amber)" -}}
+{{- else if eq $color "ink" -}}{{- $value = "var(--ink)" -}}
+{{- else if eq $color "muted" -}}{{- $value = "var(--muted)" -}}
+{{- else if eq $color "error" -}}{{- $value = "var(--error)" -}}
+{{- else if eq $color "cyan" -}}{{- $value = "var(--primary)" -}}
+{{- else if eq $color "cyan-light" -}}{{- $value = "var(--primary)" -}}
+{{- else if eq $color "emerald" -}}{{- $value = "var(--accent-teal)" -}}
+{{- else if eq $color "indigo" -}}{{- $value = "var(--accent-amber)" -}}
+{{- end -}}
+{{- $inner := .Inner | markdownify -}}
+{{- $inner = strings.TrimPrefix "<p>" $inner -}}
+{{- $inner = strings.TrimSuffix "</p>" $inner -}}
+<span class="accent" style="color: {{ $value | safeCSS }};">{{ $inner | safeHTML }}</span>

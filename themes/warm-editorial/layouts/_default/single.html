@@ -1,0 +1,61 @@
+{{ define "main" }}
+{{- $tag := index .Params.tags 0 | default (.Params.category | default "Article") -}}
+{{- $author := or .Params.author .Site.Params.author "Author" -}}
+{{- $authorRole := or .Params.authorRole .Site.Params.authorRole "Writer" -}}
+{{- $names := split $author " " -}}
+{{- $first := index $names 0 | default "A" -}}
+{{- $second := "" -}}
+{{- if gt (len $names) 1 -}}{{ $second = index $names 1 }}{{- end -}}
+{{- $initials := upper (printf "%s%s" (substr $first 0 1) (substr $second 0 1)) -}}
+
+<article>
+  <header class="article-hero">
+    <div class="container">
+      <a class="pill article-hero__pill" href="{{ printf "/tags/%s/" ($tag | urlize) | relURL }}">
+        <span>{{ $tag | humanize }}</span>
+      </a>
+      <h1 class="article-hero__title">{{ .Title }}</h1>
+
+      <div class="article-meta">
+        <div class="article-meta__author">
+          <div class="article-meta__avatar" aria-hidden="true">{{ $initials }}</div>
+          <div>
+            <span class="article-meta__author-name">{{ $author }}</span>
+            <span class="article-meta__author-role">{{ $authorRole }}</span>
+          </div>
+        </div>
+
+        <div class="article-meta__item">
+          <svg class="article-meta__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2" y="3" width="12" height="11" rx="1.5"/>
+            <path d="M2 6h12M5 1v3M11 1v3"/>
+          </svg>
+          <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+        </div>
+
+        <div class="article-meta__item">
+          <svg class="article-meta__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="8" cy="8" r="6"/>
+            <path d="M8 5v3l2 2"/>
+          </svg>
+          <span>{{ .ReadingTime }} min read</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="article-layout">
+      <div class="article-content">
+        {{ .Content }}
+      </div>
+
+      <aside class="sidebar" aria-label="Article sidebar">
+        {{ partial "toc.html" . }}
+        {{ partial "related.html" . }}
+        {{ partial "newsletter.html" . }}
+      </aside>
+    </div>
+  </div>
+</article>
+{{ end }}

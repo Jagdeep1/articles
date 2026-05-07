@@ -1,0 +1,28 @@
+{{ define "main" }}
+{{- $posts := where site.RegularPages "Section" "posts" -}}
+<section class="container">
+  <header class="article-list__lead">
+    <h1>{{ .Site.Title }}</h1>
+    {{- with .Site.Params.description }}<p>{{ . }}</p>{{ end }}
+  </header>
+
+  <div class="article-list">
+    {{- range $posts }}
+      {{ partial "article-card.html" . }}
+    {{- else }}
+      <p style="text-align:center; color: var(--muted); grid-column: 1 / -1;">No posts yet.</p>
+    {{- end }}
+  </div>
+
+  {{- if .Site.Params.newsletterEnabled }}
+  <aside id="newsletter" class="cta-coral">
+    <h2 class="cta-coral__title">{{ or .Site.Params.tagline "Stay in the loop." }}</h2>
+    <p class="cta-coral__copy">A short, considered note when something new is published. No spam, unsubscribe any time.</p>
+    <form class="cta-coral__form" action="#" method="post" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed';">
+      <input type="email" name="email" placeholder="email@example.com" required aria-label="Email address">
+      <button type="submit">Subscribe</button>
+    </form>
+  </aside>
+  {{- end }}
+</section>
+{{ end }}
