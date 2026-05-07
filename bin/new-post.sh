@@ -33,9 +33,9 @@ if [ "$1" = "--title" ]; then
   TITLE="$1"
   SLUG="$(slugify "$TITLE")"
   [ -n "$SLUG" ] || { echo "error: empty slug from title" >&2; exit 1; }
-  TARGET="content/posts/${SLUG}.md"
+  TARGET="content/en/posts/${SLUG}.md"
   [ ! -e "$TARGET" ] || { echo "error: $TARGET already exists" >&2; exit 1; }
-  hugo new content "posts/${SLUG}.md" >/dev/null
+  hugo new content "en/posts/${SLUG}.md" >/dev/null
   # rewrite the auto-titled stub with the user-supplied title
   TMP="$(mktemp)"
   awk -v t="$TITLE" '
@@ -55,7 +55,7 @@ SRC="$1"
 BASE="$(basename "$SRC" .md)"
 SLUG="$(slugify "$BASE")"
 [ -n "$SLUG" ] || { echo "error: empty slug from filename" >&2; exit 1; }
-TARGET="content/posts/${SLUG}.md"
+TARGET="content/en/posts/${SLUG}.md"
 [ ! -e "$TARGET" ] || { echo "error: $TARGET already exists" >&2; exit 1; }
 
 mkdir -p content/posts

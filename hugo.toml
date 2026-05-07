@@ -1,9 +1,94 @@
-baseURL = 'https://jagdeep1.github.io/'
-locale = 'en-us'
-title = 'Notes & Thoughts'
-theme = 'PaperMod'
-enableRobotsTXT = true
+baseURL = "https://jagdeep1.github.io/"
+title = "Notes & Thoughts"
+theme = "hugo-primer-blog"
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
 enableGitInfo = true
+enableRobotsTXT = true
+
+[languages]
+  [languages.en]
+    contentDir = "content/en"
+    label = "English"
+    weight = 1
+
+  [languages.en.params]
+    description = "Notes and thoughts by Jagdeep."
+
+[params]
+  author = "Jagdeep"
+  dateFormat = "2006-01-02"
+  defaultTheme = "auto"
+  description = "Notes and thoughts by Jagdeep."
+  primaryColor = "#0969da"
+  recentPostsCount = 5
+  showAuthor = true
+  showReadingTime = true
+  showShareButtons = true
+  sidebar = true
+
+  [[params.sidebarModules]]
+    partial = "recentPosts"
+
+  [[params.sidebarModules]]
+    partial = "tags"
+
+  [[params.sidebarModules]]
+    partial = "categories"
+
+  [[params.sidebarModules]]
+    partial = "archive"
+
+  [params.social]
+    github = "jagdeep1"
+
+[menus]
+  [[menus.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menus.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+
+  [[menus.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+
+[taxonomies]
+  archive = "archives"
+  category = "categories"
+  tag = "tags"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNumbersInTable = true
+    style = "github"
+    tabWidth = 4
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+  taxonomy = ["HTML"]
+  term = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[frontmatter]
+  date = ["date", "publishDate", "lastmod"]
+  lastmod = ["lastmod", ":git", "date", "publishDate"]
 
 [pagination]
   pagerSize = 10
@@ -11,24 +96,3 @@ enableGitInfo = true
 [minify]
   disableXML = true
   minifyOutput = true
-
-[params]
-  env = 'production'
-  defaultTheme = 'auto'
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowCodeCopyButtons = true
-  ShowToc = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-
-  [params.homeInfoParams]
-    Title = "Hi 👋"
-    Content = "Welcome to Notes & Thoughts."
-
-  [[params.socialIcons]]
-    name = 'github'
-    url = 'https://github.com/jagdeep1'
-
-[outputs]
-  home = ['HTML', 'RSS', 'JSON']
