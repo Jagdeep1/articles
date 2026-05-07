@@ -1,0 +1,34 @@
+baseURL = 'https://jagdeep1.github.io/'
+locale = 'en-us'
+title = 'Notes & Thoughts'
+theme = 'PaperMod'
+enableRobotsTXT = true
+enableGitInfo = true
+
+[pagination]
+  pagerSize = 10
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+[params]
+  env = 'production'
+  defaultTheme = 'auto'
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+
+  [params.homeInfoParams]
+    Title = "Hi 👋"
+    Content = "Welcome to Notes & Thoughts."
+
+  [[params.socialIcons]]
+    name = 'github'
+    url = 'https://github.com/jagdeep1'
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
